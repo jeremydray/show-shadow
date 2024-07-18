@@ -1,45 +1,99 @@
+const contentEl = document.querySelector('.content');
+const searchEl = document.querySelector('.userSubmission')
+const submitEl = document.querySelector('#submission')
+const previousSearchEl = document.querySelector('.previousSearches')
 
-//Event Search
-//'https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=EGPaeJvEARHDtDujZj2YKE5LyNqeJry5'
+window.onload =
+    function searchResultSwitch(event) {
+        event.preventDefault();
+        const searchValue = JSON.parse(localStorage.getItem('citySearch'));
+        console.log(searchValue);
+        getVenueData(searchValue);
+    }
 
-//Get event details
-//'https://app.ticketmaster.com/discovery/v2/events/G5diZfkn0B-bh.json?apikey=EGPaeJvEARHDtDujZj2YKE5LyNqeJry5'
-
-//Get event images
-//https://app.ticketmaster.com/discovery/v2/events/k7vGFKzleBdwS/images.json?apikey=EGPaeJvEARHDtDujZj2YKE5LyNqeJry5
-
-async function getVenueData(city) {
-
-    const citySearchUrl = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&radius=100&size=30&classificationName=music&apikey=EGPaeJvEARHDtDujZj2YKE5LyNqeJry5`;
-    const eventInfo = await fetch(citySearchUrl)
-    const eventData = await eventInfo.json();
-    return eventData._embedded.events
-    // .then(function (response) {
-    //     console.log(response.json());
-    //     // displayVenueData(response)
-    // })
+function searchResultClick(event) {
+    event.preventDefault();
+    const userSearch = searchEl.value;
+    let searchedCity = JSON.parse(localStorage.getItem('citySearch'));
+    if (!searchedCity) {
+        searchedCity = []
+    }
+    console.log(searchedCity);
+    searchedCity.push(userSearch);
+    localStorage.setItem('citySearch', JSON.stringify(searchedCity))
+    contentEl.innerHTML = ""
+    getVenueData(userSearch);
 }
 
-getVenueData('Dallas').then(function (events) {
-    console.log(events);
-    for (let i = 0; i < 3; i++) { //change to events length
-        console.log(events[i].name);
-        console.log(events[i].dates.start.localDate);
-        console.log(events[i].url);
-        console.log(events[i]._embedded.venues[0].location.latitude);
-        console.log(events[i]._embedded.venues[0].location.longitude);
+function getVenueData(city) {
+    const citySearchUrl = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&radius=100&size=30&classificationName=music&sort=date,asc&apikey=EGPaeJvEARHDtDujZj2YKE5LyNqeJry5`;
+    fetch(citySearchUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (responseObj) {
+            console.log(responseObj);
+            getVenueInfo(responseObj)
+        })
+}
+
+function getVenueInfo(responseObj) {
+    const savedSearches = JSON.parse(localStorage.getItem('citySearch'));
+    previousSearchEl.innerHTML = ""
+    if (!savedSearches) { return } else {
+        for (let i = 0; i < savedSearches.length; i++) {
+            const saveButtons = document.createElement('button')
+            saveButtons.classList.add('button', 'is-primary', 'is-dark')
+            saveButtons.append(savedSearches[i]);
+            previousSearchEl.append(saveButtons)
+        }
     }
-})
+
+    if (responseObj.page.totalElements === 0) {
+        const noResults = document.createElement('h2');
+        noResults.textContent = "Error: No Results Found"
+        contentEl.append(noResults)
+    } else {
+        for (let i = 0; i < responseObj._embedded.events.length; i++) {
+            const eventCard = document.createElement('div');
+            eventCard.classList.add('container.is-max-desktop', 'event-card')
+
+            // console.log(responseObj._embedded.events[i].name);
+            const eventName = document.createElement('h3');
+            eventName.classList.add('event-name');
+            eventName.innerHTML = responseObj._embedded.events[i].name;
+
+            // console.log(responseObj._embedded.events[i].dates.start.localDate);
+            const eventDate = document.createElement('h4');
+            eventDate.classList.add('event-date')
+            eventDate.innerHTML = `Date: ${responseObj._embedded.events[i].dates.start.localDate}`;
+
+            // console.log(responseObj._embedded.events[i]._embedded.venues[0].name);
+            const venueLocation = document.createElement('h4');
+            venueLocation.classList.add('venue-location')
+            venueLocation.innerHTML = `Venue: ${responseObj._embedded.events[i]._embedded.venues[0].name}`
+
+            // console.log(responseObj._embedded.events[i].url);
+            const webLink = document.createElement('a');
+            webLink.classList.add('web-link');
+            webLink.setAttribute('href', responseObj._embedded.events[i].url)
+            webLink.setAttribute('newTab', 'target = "_blank"')
+            webLink.innerHTML = "Click here to buy tickets!"
+
+            // console.log(responseObj._embedded.events[i]._embedded.venues[0].name);
+            const eventImage = document.createElement('div');
+            eventImage.classList.add('event-image', 'image');
+            eventImage.innerHTML = `<img src=${responseObj._embedded.events[i].images[0].url}>)`
 
 
+            eventCard.append(eventName, eventDate, venueLocation, webLink, eventImage);
+            contentEl.append(eventCard);
+        }
+    }
+}
 
-// console.log(test)
+// console.log(events[i]._embedded.venues[0].location.latitude);
+// console.log(events[i]._embedded.venues[0].location.longitude);
 
-
-// function displayVenueData(responseObj) {
-//     let response {
-//         venueName: responseObj._embedded.events[0].name,
-//     }
-// }
-// console.log(responseData.name)
+submitEl.addEventListener('click', searchResultClick)
 

@@ -1,0 +1,13 @@
+.event-card {
+    border: 1px solid #fff;
+    margin: 5px;
+}
+
+.button {
+    margin: 10px;
+}
+
+img {
+    max-width: 50%;
+    max-height: 40%;
+}
