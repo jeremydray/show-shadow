@@ -12,6 +12,7 @@
 img {
     max-width: 50%;
     max-height: 40%;
+}
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -19,11 +20,13 @@ body {
     color: #ee7d51;
     text-align: center;
 }
+
 .header {
     padding: 20px;
     background: #ca593d;
     color: #333;
 }
+
 .logo {
     width: 100px;
     height: 100px;
@@ -31,23 +34,28 @@ body {
     background: #ccc;
     display: inline-block;
 }
+
 .title {
     font-size: 2.5rem;
     font-weight: 600;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
+
 .nav-tabs {
     margin-top: 10px;
 }
+
 .searchbar {
     margin: 50px auto;
 }
+
 .searchbar input {
     width: 300px;
     padding: 10px;
     border-radius: 5px;
     border: none;
 }
+
 .searchbar button {
     padding: 10px 20px;
     border-radius: 5px;
