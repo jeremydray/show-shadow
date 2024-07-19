@@ -2,6 +2,7 @@ const contentEl = document.querySelector('.content');
 const searchEl = document.querySelector('.userSubmission')
 const submitEl = document.querySelector('#submission')
 const previousSearchEl = document.querySelector('.previousSearches')
+const resultsButtonEl = document.querySelector('.searchedCities')
 
 window.onload =
     function searchResultSwitch(event) {
@@ -14,15 +15,20 @@ window.onload =
 function searchResultClick(event) {
     event.preventDefault();
     const userSearch = searchEl.value;
-    let searchedCity = JSON.parse(localStorage.getItem('citySearch'));
-    if (!searchedCity) {
-        searchedCity = []
-    }
+    const searchedCity = JSON.parse(localStorage.getItem('citySearch'));
     console.log(searchedCity);
     searchedCity.push(userSearch);
     localStorage.setItem('citySearch', JSON.stringify(searchedCity))
     contentEl.innerHTML = ""
     getVenueData(userSearch);
+}
+
+function previousResultClick(event) {
+    event.preventDefault();
+    const previousSearch = event.currentTarget.textContent._links.self.href
+    // console.log(previousSearch)
+    contentEl.innerHTML = ""
+    getVenueData(previousSearch);
 }
 
 function getVenueData(city) {
@@ -43,7 +49,7 @@ function getVenueInfo(responseObj) {
     if (!savedSearches) { return } else {
         for (let i = 0; i < savedSearches.length; i++) {
             const saveButtons = document.createElement('button')
-            saveButtons.classList.add('button', 'is-primary', 'is-dark')
+            saveButtons.classList.add('button', 'is-primary', 'is-dark', 'searchedCities', `${savedSearches[i]}`)
             saveButtons.append(savedSearches[i]);
             previousSearchEl.append(saveButtons)
         }
@@ -83,7 +89,7 @@ function getVenueInfo(responseObj) {
             // console.log(responseObj._embedded.events[i]._embedded.venues[0].name);
             const eventImage = document.createElement('div');
             eventImage.classList.add('event-image', 'image');
-            eventImage.innerHTML = `<img src=${responseObj._embedded.events[i].images[0].url}>)`
+            eventImage.innerHTML = `<img src=${responseObj._embedded.events[i].images[0].url}>`
 
 
             eventCard.append(eventName, eventDate, venueLocation, webLink, eventImage);
@@ -95,5 +101,6 @@ function getVenueInfo(responseObj) {
 // console.log(events[i]._embedded.venues[0].location.latitude);
 // console.log(events[i]._embedded.venues[0].location.longitude);
 
-submitEl.addEventListener('click', searchResultClick)
+submitEl.addEventListener('click', searchResultClick);
 
+previousSearchEl.addEventListener('click', previousResultClick);
