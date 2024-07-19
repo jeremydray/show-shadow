@@ -25,7 +25,7 @@ function searchResultClick(event) {
 
 function previousResultClick(event) {
     event.preventDefault();
-    const previousSearch = event.currentTarget.textContent._links.self.href
+    const previousSearch = event.target.getAttribute("value")
     // console.log(previousSearch)
     contentEl.innerHTML = ""
     getVenueData(previousSearch);
@@ -49,7 +49,8 @@ function getVenueInfo(responseObj) {
     if (!savedSearches) { return } else {
         for (let i = 0; i < savedSearches.length; i++) {
             const saveButtons = document.createElement('button')
-            saveButtons.classList.add('button', 'is-primary', 'is-dark', 'searchedCities', `${savedSearches[i]}`)
+            saveButtons.classList.add('button', 'is-primary', 'is-dark', 'searchedCities')
+            saveButtons.setAttribute('value', `${savedSearches[i]}`)
             saveButtons.append(savedSearches[i]);
             previousSearchEl.append(saveButtons)
         }
@@ -83,7 +84,6 @@ function getVenueInfo(responseObj) {
             const webLink = document.createElement('a');
             webLink.classList.add('web-link');
             webLink.setAttribute('href', responseObj._embedded.events[i].url)
-            webLink.setAttribute('newTab', 'target = "_blank"')
             webLink.innerHTML = "Click here to buy tickets!"
 
             // console.log(responseObj._embedded.events[i]._embedded.venues[0].name);
