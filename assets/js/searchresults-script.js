@@ -8,7 +8,7 @@ window.onload =
     function searchResultSwitch(event) {
         event.preventDefault();
         const searchValue = JSON.parse(localStorage.getItem('citySearch'));
-        console.log(searchValue);
+        // console.log(searchValue);
         getVenueData(searchValue);
     }
 
@@ -16,7 +16,7 @@ function searchResultClick(event) {
     event.preventDefault();
     const userSearch = searchEl.value;
     const searchedCity = JSON.parse(localStorage.getItem('citySearch'));
-    console.log(searchedCity);
+    // console.log(searchedCity);
     searchedCity.push(userSearch);
     localStorage.setItem('citySearch', JSON.stringify(searchedCity))
     contentEl.innerHTML = ""
@@ -26,7 +26,6 @@ function searchResultClick(event) {
 function previousResultClick(event) {
     event.preventDefault();
     const previousSearch = event.target.getAttribute("value")
-    // console.log(previousSearch)
     contentEl.innerHTML = ""
     getVenueData(previousSearch);
 }
@@ -38,7 +37,7 @@ function getVenueData(city) {
             return response.json();
         })
         .then(function (responseObj) {
-            console.log(responseObj);
+            // console.log(responseObj);
             getVenueInfo(responseObj)
         })
 }
