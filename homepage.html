@@ -10,28 +10,39 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body>
-    <div class="header">
-        <div class="logo"></div>
-        <div class="title">Show Shadow</div>
-        <ul class="nav nav-tabs justify-content-center">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Entertainment Events</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Social Events</a>
-            </li>
-        </ul>
-    </div>
-    <div class="searchbar">
-        <input type="text" placeholder="Searchbar for zip, state" id="userSearchValue">
-        <button id="initial-Search">Search</button>
-    </div>
 
-    <div class="background-video">xcc ad
-        
+<header class="header">
+    <div class="logo"></div>
+    <div class="title">Show Shadow</div>
+    </ul>
+</header>
+
+<body>
+    <div class=container>
+        <div class="searchbar">
+            <input type="text" placeholder="Search for City" id="userSearchValue">
+            <button id="initial-Search">Search</button>
+        </div>
     </div>
     <script src="./assets/js/homepage-script.js"></script>
 </body>
+
+<div class="modal" id="welcomeModal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Welcome to ShowShadow</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <p>Welcome to ShowShadow, your ultimate event finder! Search for entertainment and social events near
+                you.</p>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" id="modalCloseBtn">Get Started</button>
+        </footer>
+    </div>
+</div>
+
 
 </html>

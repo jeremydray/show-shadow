@@ -13,3 +13,22 @@ function searchResultSwitch(event) {
     localStorage.setItem('citySearch', JSON.stringify(citySearch))
     location.href = "search-results.html"
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('welcomeModal');
+    const closeModalBtn = document.querySelector('.delete');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    // Function to open the modal
+    const openModal = () => {
+        modal.classList.add('is-active');
+    };
+    // Function to close the modal
+    const closeModal = () => {
+        modal.classList.remove('is-active');
+    };
+    // Open the modal when the page loads
+    openModal();
+    // Add event listeners to close the modal
+    closeModalBtn.addEventListener('click', closeModal);
+    modalCloseBtn.addEventListener('click', closeModal);
+});
