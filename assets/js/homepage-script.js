@@ -1,13 +1,19 @@
 const submitEl = document.querySelector('#initial-Search')
 const searchEl = document.querySelector('#userSearchValue')
+const errorEl = document.querySelector('#error-modal')
 
 window.onload = localStorage.clear();
 
 submitEl.addEventListener('click', searchResultSwitch)
 
+
 function searchResultSwitch(event) {
     event.preventDefault();
     const userSearch = searchEl.value;
+    // if (!userSearch) {
+
+    //     return
+    // }
     let citySearch = [];
     citySearch.push(userSearch);
     localStorage.setItem('citySearch', JSON.stringify(citySearch))
@@ -31,4 +37,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listeners to close the modal
     closeModalBtn.addEventListener('click', closeModal);
     modalCloseBtn.addEventListener('click', closeModal);
-});
+})
+
