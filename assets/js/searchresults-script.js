@@ -72,7 +72,7 @@ function getVenueInfo(responseObj) {
 
             // console.log(responseObj._embedded.events[i].name);
             const eventName = document.createElement('h3');
-            eventName.classList.add('event-name');
+            eventName.classList.add('event-name', 'is-size-2', 'is-underlined');
             eventName.innerHTML = responseObj._embedded.events[i].name;
 
             // console.log(responseObj._embedded.events[i].dates.start.localDate);
@@ -87,7 +87,7 @@ function getVenueInfo(responseObj) {
 
             // console.log(responseObj._embedded.events[i].url);
             const webLink = document.createElement('a');
-            webLink.classList.add('web-link');
+            webLink.classList.add('button', 'web-link', 'is-link', 'is-warning');
             webLink.setAttribute('href', responseObj._embedded.events[i].url)
             webLink.innerHTML = "Click here to buy tickets!"
 
@@ -102,7 +102,7 @@ function getVenueInfo(responseObj) {
             const eventLon = responseObj._embedded.events[i]._embedded.venues[0].location.latitude
             const eventLat = responseObj._embedded.events[0]._embedded.venues[0].location.longitude
 
-            let map = L.map(eventLocation).setView([eventLon, eventLat], 13);
+            let map = L.map(eventLocation).setView([eventLon, eventLat], 18);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map)
