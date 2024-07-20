@@ -5,31 +5,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShowShadow</title>
+    <title>Show Shadow Results</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link rel="stylesheet" href="./assets/css/style.css" </head>
 
 <body>
-    <div class="header">
+    <header class="header container is-fullhd">
         <a href="/">
-            <img src="assets/images/Shadow.png" class="logo"></img>
+            <img src="assets/images/shadow-logo.png" class="logo" alt="two letter S to signify brand name"></img>
         </a>
-        <div class="title">Show Shadow</div>
+        <div class="gloock-regular title brand">Show Shadow</div>
         <navbar class="previousSearches searches"></navbar>
-        <ul class="nav nav-tabs justify-content-center">
-            <li class="nav-item">
-            </li>
-            <li class="nav-item">
-            </li>
-        </ul>
-    </div>
-    <div class="searchbar">
-        <input type="text" placeholder="Search for City" class="userSubmission">
-        <button id="submission">Search</button>
-    </div>
-    <div class="content">
+    </header>
+    <navbar class="searchbar">
+        <input type="text" placeholder="Search for another city" class="userSubmission">
+        <br>
+        <button class="button is-primary is-dark" id="submission">Search</button>
+    </navbar>
+    <div class="container content is-fullhd is-centered">
     </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

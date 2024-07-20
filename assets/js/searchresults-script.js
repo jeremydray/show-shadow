@@ -67,7 +67,7 @@ function getVenueInfo(responseObj) {
     } else {
         for (let i = 0; i < responseObj._embedded.events.length; i++) {
             const eventCard = document.createElement('div');
-            eventCard.classList.add('container.is-widescreen', 'event-card')
+            eventCard.classList.add('container.is-max-widescreen', 'event-card')
             // eventCard.setAttribute('id', 'map')
 
             // console.log(responseObj._embedded.events[i].name);

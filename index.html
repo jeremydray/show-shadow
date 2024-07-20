@@ -5,24 +5,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show Shadow</title>
+    <title>Show Shadow Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 
-<header class="header">
-    <img src="assets/images/Shadow.png" class="logo"></img>
-    <div class="title">Show Shadow</div>
+<header class="header container is-fullhd">
+    <img src="assets/images/shadow-logo.png" class="logo" alt="two letter S to signify brand name"></img>
+    <div class="gloock-regular title">Show Shadow</div>
     </ul>
 </header>
 
 <body>
-    <div class=container>
-        <div class="searchbar">
-            <input type="text" placeholder="Search for City" id="userSearchValue">
-            <button id="initial-Search">Search</button>
-        </div>
+    <div class="container is-fullhd">
+        <img class="background " src="/assets/images/homepage-background.jpeg"
+            alt="image of crowd at a concert cheering">
+    </div>
+    <div class="searchbar city-input">
+        <input type="text" placeholder="Search for City" id="userSearchValue">
+        <br>
+        <button class="button is-primary is-dark" id="initial-Search">Search</button>
+    </div>
     </div>
     <div class="modal" id="welcomeModal">
         <div class="modal-background"></div>
@@ -32,8 +39,8 @@
                 <button class="delete" aria-label="close"></button>
             </header>
             <section class="modal-card-body">
-                <p>Welcome to ShowShadow, your ultimate event finder! Search for entertainment and social events near
-                    you.</p>
+                <p>Welcome to ShowShadow, your ultimate concert finder! Begin by searching for a city to view the next
+                    upcoming shows!</p>
             </section>
             <footer class="modal-card-foot">
                 <button class="button is-success" id="modalCloseBtn">Get Started</button>

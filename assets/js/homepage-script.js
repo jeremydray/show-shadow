@@ -10,10 +10,12 @@ submitEl.addEventListener('click', searchResultSwitch)
 function searchResultSwitch(event) {
     event.preventDefault();
     const userSearch = searchEl.value;
-    // if (!userSearch) {
+    if (!userSearch) {
+        return
+    }
 
-    //     return
-    // }
+
+
     let citySearch = [];
     citySearch.push(userSearch);
     localStorage.setItem('citySearch', JSON.stringify(citySearch))
