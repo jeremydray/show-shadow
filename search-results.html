@@ -5,40 +5,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShowShadow</title>
+    <title>Show Shadow Results</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
-    <link rel="stylesheet" href="./assets/css/stylesearch.css">
-</head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="./assets/css/style.css" </head>
 
 <body>
-    <div class="header">
-        <div class="logo">YOUR LOGO</div>
-        <div class="title">Show Shadow</div>
+    <header class="header container is-fullhd">
+        <a href="/">
+            <img src="assets/images/shadow-logo.png" class="logo" alt="two letter S to signify brand name"></img>
+        </a>
+        <div class="gloock-regular title brand">Show Shadow</div>
         <navbar class="previousSearches searches"></navbar>
-        <ul class="nav nav-tabs justify-content-center">
-            <li class="nav-item">
-            </li>
-            <li class="nav-item">
-            </li>
-        </ul>
+    </header>
+    <navbar class="searchbar">
+        <input type="text" placeholder="Search for another city" class="userSubmission">
+        <br>
+        <button class="button is-primary is-dark" id="submission">Search</button>
+    </navbar>
+    <div class="container content is-fullhd is-centered">
     </div>
-    <div class="searchbar">
-        <input type="text" placeholder="Searchbar for zip, state" class="userSubmission">
-        <button id="submission">Search</button>
-    </div>
-    <div class="content">
-        <div class="left">
-            <div class="event-image">Artist/Event Image</div>
-            <div class="event-info">
-                <h2>Event Name</h2>
-                <p>Wikipedia snippet about the event</p>
-            </div>
-        </div>
-        <div class="right">
-            <div class="map-image">Venue Location Map Image</div>
-            <div class="ticket-info">Where to Buy Tickets</div>
-        </div>
-    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <script src="./assets/js/searchresults-script.js"></script>
 </body>
 
