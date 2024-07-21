@@ -78,7 +78,8 @@ function getVenueInfo(responseObj) {
             // console.log(responseObj._embedded.events[i].dates.start.localDate);
             const eventDate = document.createElement('h4');
             eventDate.classList.add('event-date')
-            eventDate.innerHTML = `Date: ${responseObj._embedded.events[i].dates.start.localDate}`;
+            const date = dayjs(responseObj._embedded.events[i].dates.start.localDate).format('MM/DD/YYYY')
+            eventDate.innerHTML = `Date: ${date}`;
 
             // console.log(responseObj._embedded.events[i]._embedded.venues[0].name);
             const venueLocation = document.createElement('h4');

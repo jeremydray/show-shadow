@@ -95,11 +95,19 @@ body {
     font-style: italic;
 }
 
-.brand {
-    font-weight: 600;
-    font-style: italic;
-}
-
 .userSubmission {
     margin-top: 15px;
+}
+
+@media (width<=425px) {
+
+    .image-map {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-evenly;
+    }
+
+    .image {
+        height: 50%;
+    }
 }
