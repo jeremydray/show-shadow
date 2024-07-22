@@ -42,4 +42,3 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModalBtn.addEventListener('click', closeModal);
     modalCloseBtn.addEventListener('click', closeModal);
 })
-

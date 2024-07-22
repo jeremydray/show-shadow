@@ -25,7 +25,6 @@ function searchResultClick(event) {
     localStorage.setItem('citySearch', JSON.stringify(searchedCity))
     contentEl.innerHTML = ""
     getVenueData(userSearch);
-    getMapLocation(userSearch);
 }
 
 function previousResultClick(event) {
@@ -124,20 +123,6 @@ function getVenueInfo(responseObj) {
         }
     }
 }
-
-// function getMapLocation(eventDetails) {
-//     console.log(eventDetails)
-//     const eventLocation = document.createElement('div');
-//     eventLocation.classList.add('event-location', 'map');
-//     const map = L.map('map').setView([51.505, -0.09], 13);
-//     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//         maxZoom: 19,
-//         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-//     }).addTo(map);
-//     const marker = L.marker([51.5, -0.09]).addTo(map);
-// }
-
-
 
 submitEl.addEventListener('click', searchResultClick);
 
